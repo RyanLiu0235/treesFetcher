@@ -47,7 +47,7 @@
     }
     .commit_record {
     	height: 100%;
-			overflow-y: scroll;
+			overflow-y: auto;
 			background-color: #f5f5f5;
 			li {
 				a {

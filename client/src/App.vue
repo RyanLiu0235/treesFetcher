@@ -9,9 +9,11 @@
 </template>
 
 <script>
+  import store from './vuex/store';
   import gHeader from './components/header';
   import sideMenu from './components/sideMenu';
   export default {
+    store,
     components: {
       gHeader, sideMenu
     }
