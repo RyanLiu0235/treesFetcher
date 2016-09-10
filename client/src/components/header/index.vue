@@ -34,7 +34,6 @@
 
 <style lang="less" scoped>
 	.header {
-		width: 100%;
 		height: 50px;
 		background-color: #f1f1f1;
 		.container {

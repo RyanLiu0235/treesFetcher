@@ -1,15 +1,19 @@
 <template>
   <div>
-    <g-header></g-header>
-    <router-view></router-view>
+    <side-menu></side-menu>
+    <div class="main_content">
+      <g-header></g-header>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
   import gHeader from './components/header';
+  import sideMenu from './components/sideMenu';
   export default {
     components: {
-      gHeader
+      gHeader, sideMenu
     }
   }
 </script>
@@ -24,6 +28,15 @@
 }
 html {
   height: 100%;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.main_content {
+  margin-left: 260px;
 }
 .container {
   width: 1100px;
