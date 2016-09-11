@@ -1,6 +1,6 @@
 <script>
 	import { searchRepos } from '../../vuex/actions';
-	import { getAvatarUrl } from '../../vuex/getters';
+	import { getAvatarUrl, getAccessToken } from '../../vuex/getters';
 	import loginDialog from './loginDialog';
 
 	export default {
@@ -14,9 +14,8 @@
 			showDialog() {
 				this.dialog = true;
 			},
-
 			doSearch() {
-				this.searchRepos({repo: this.search});
+				this.searchRepos(this.access_token, {repo: this.search});
 			}
 		},
 		components: {
@@ -27,7 +26,8 @@
 				searchRepos
 			},
 			getters: {
-				avatar_url: getAvatarUrl
+				avatar_url: getAvatarUrl,
+				access_token: getAccessToken
 			}
 		}
 	}

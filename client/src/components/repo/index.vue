@@ -3,8 +3,8 @@
 	export default {
 		vuex: {
 			getters: {
-				reposList: getReposList,
-				reposTotalCount: getReposTotalCount
+				repos_count: getReposTotalCount,
+				repos: getReposList
 			}
 		}
 	}
@@ -13,19 +13,21 @@
 <template>
 	<div class="repo_result">
 		<div class="container">
-			<div class="repo_search_title">搜索到的仓库，总共234个</div>
-			<ul class="repo_list">
-				<li class="repo_item">
-					<div class="repo_stats">
-						<span class="repo_lang">JavaScript</span>
-						<span>star-3</span>
-						<span>fork-12</span>
-					</div>
-					<a class="repo_name" v-link="{ path: '/tree/' + 12123}">stop2stare/cnode-vue</a>
-					<div class="repo_description">呵呵哈哈</div>
-					<div class="repo_meta">更新于3天前</div>
-				</li>
-			</ul>
+			<div v-if="repos" class="repo_search_result">
+				<div class="repo_search_title">搜索到的仓库，总共{{ repos_count }}个</div>
+				<ul class="repo_list" v-for="repo in repos">
+					<li class="repo_item">
+						<div class="repo_stats">
+							<span class="repo_lang">{{ repo.language }}</span>
+							<span>star-{{ repo.stargazers_count }}</span>
+							<span>fork-{{ repo.forks_count }}</span>
+						</div>
+						<a class="repo_name" v-link="{ path: '/repos/' + repo.owner.login + '/' + repo.name + '/branches' }">{{ repo.full_name}}</a>
+						<div class="repo_description">{{ repo.description }}</div>
+						<!-- <div class="repo_meta">更新于3天前</div> -->
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </template>
