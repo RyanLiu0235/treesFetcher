@@ -23,6 +23,7 @@
 				this.curPage = Number(transition.to.query.p);
 				this.query = transition.to.query.q;
 				this.searchRepos(this.access_token, {repo: this.query, page: this.curPage});
+				window.scrollTo(0, 0);
 				transition.next();
 			}
 		}
@@ -33,6 +34,7 @@
 	<div class="repo_result">
 		<div class="container">
 			<div v-if="repos" class="repo_search_result">
+				<div class="page_tip">当前第{{ curPage }}页</div>
 				<div class="repo_search_title">搜索到的仓库，总共{{ repos_count }}个</div>
 				<ul class="repo_list">
 					<li class="repo_item" v-for="repo in repos">
@@ -68,6 +70,10 @@
 <style lang="less" scoped>
 	.repo_result {
 		margin-top: 15px;
+		.page_tip {
+	    float: right;
+    	line-height: 40px;
+		}
 		.repo_search_title {
 			line-height: 40px;
 			font-size: 16px;

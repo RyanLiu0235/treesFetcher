@@ -15,7 +15,7 @@
 			},
 			doSearch() {
 				if (this.search) {
-					this.$router.go('/search/repositories?q=' + this.search);
+					this.$router.go(`/search/repositories?q=${this.search}&p=1`);
 				}
 			}
 		},
