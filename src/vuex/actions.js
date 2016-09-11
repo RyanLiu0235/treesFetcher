@@ -1,6 +1,6 @@
 import * as types from './mutations';
 import Vue from 'vue';
-import { saveLocalItem } from '../utils';
+import { saveLocalItem, removeLocalItem } from '../utils';
 
 const githubApi = 'https://api.github.com';
 
@@ -41,6 +41,15 @@ export const login = ({ dispatch }, access_token, remember_me) => {
     })
     .catch(res => {
       console.log(res);
-    })
+    });
+}
 
+/**
+ * 登出
+ */
+export const logout = ({ dispatch }) => {
+  removeLocalItem('access_token');
+  removeLocalItem('avatar_url');
+  dispatch(types.LOGOUT);
+  return Promise.resolve({status: true});
 }

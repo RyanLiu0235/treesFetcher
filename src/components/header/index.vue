@@ -1,4 +1,5 @@
 <script>
+	import { logout } from '../../vuex/actions';
 	import { getAvatarUrl } from '../../vuex/getters';
 	import loginDialog from './loginDialog';
 
@@ -13,6 +14,12 @@
 			showDialog() {
 				this.dialog = true;
 			},
+			doLogout() {
+				this.logout()
+					.then(res => {
+						this.$router.go('/');
+					})
+			},
 			doSearch() {
 				if (this.search) {
 					this.$router.go(`/search/repositories?q=${this.search}&p=1`);
@@ -25,6 +32,9 @@
 		vuex: {
 			getters: {
 				avatar_url: getAvatarUrl
+			},
+			actions: {
+				logout
 			}
 		}
 	}
@@ -50,6 +60,9 @@
 			</div>
 			<div v-if="avatar_url" class="h_avatar">
 				<img :src="avatar_url">
+			</div>
+			<div v-if="avatar_url" class="h_login">
+				<span class="login_button" @click="doLogout">登出</span>
 			</div>
 		</div>
 		<login-dialog v-if="dialog" :dialog.sync="dialog"></login-dialog>
@@ -92,6 +105,7 @@
 	    display: block;
 	    width: 40px;
 	    height: 40px;
+	    margin-right: 10px;
 	    border-radius: 20px;
 	    overflow: hidden;
 	    cursor: pointer;

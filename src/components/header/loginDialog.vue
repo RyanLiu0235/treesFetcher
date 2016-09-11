@@ -63,7 +63,7 @@
 		background-color: rgba(0, 0, 0, 0.4);
 		.dialog_content {
 			position: fixed;
-			top: 50%;
+			top: 30%;
 			left: 50%;
 			z-index: 111;
 			width: 360px;
@@ -80,7 +80,7 @@
 				border-bottom: 1px #e0e0e0 solid;
 			}
 			.dialog_main {
-				padding: 0 40px 10px;
+				padding: 0 40px 20px;
 				.form_label {
 					margin-top: 20px;
 					font-size: 14px;
@@ -111,7 +111,7 @@
 			}
 		}
 		.button_container {
-			margin-top: 5px;
+			margin-top: 20px;
 			font-size: 0;
 			text-align: center;
 			.button {

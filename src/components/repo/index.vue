@@ -22,8 +22,10 @@
 			data(transition) {
 				this.curPage = Number(transition.to.query.p);
 				this.query = transition.to.query.q;
-				this.searchRepos(this.access_token, {repo: this.query, page: this.curPage});
-				window.scrollTo(0, 0);
+				this.searchRepos(this.access_token, {repo: this.query, page: this.curPage})
+					.then(res => {
+						window.scrollTo(0, 0);
+					});
 				transition.next();
 			}
 		}
