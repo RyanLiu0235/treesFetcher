@@ -13,7 +13,7 @@
 <template>
 	<div class="repo_result">
 		<div class="container">
-			<div class="repo_search_title">搜索到的仓库</div>
+			<div class="repo_search_title">搜索到的仓库，总共234个</div>
 			<ul class="repo_list">
 				<li class="repo_item">
 					<div class="repo_stats">
