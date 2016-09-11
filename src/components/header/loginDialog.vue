@@ -89,9 +89,9 @@
 				.form_control {
 					margin-top: 10px;
 					input[type="text"] {
-						height: 24px;
+						height: 30px;
 				    width: 100%;
-				    padding: 0 3px;
+				    padding: 0 5px;
 				    outline: none;
 				    border: 1px #e0e0e0 solid;
 				    border-radius: 4px;
