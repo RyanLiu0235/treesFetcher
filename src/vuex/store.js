@@ -22,7 +22,7 @@ const mutations = {
 	},
 
 	[types.LOGIN](state, data) {
-		state.avatar_url = data.avatar_url + '&s=40';
+		state.avatar_url = `${data.avatar_url}&s=40`;
 		state.access_token = data.access_token;
 	}
 }

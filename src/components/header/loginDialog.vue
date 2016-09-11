@@ -96,6 +96,9 @@
 				    border: 1px #e0e0e0 solid;
 				    border-radius: 4px;
 					}
+					input[type="checkbox"] {
+						vertical-align: middle;
+					}
 				}
 				.tip {
 				  margin-top: 5px;

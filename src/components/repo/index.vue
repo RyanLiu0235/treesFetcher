@@ -40,8 +40,8 @@
 					<li class="repo_item" v-for="repo in repos">
 						<div class="repo_stats">
 							<span class="repo_lang">{{ repo.language }}</span>
-							<span>star-{{ repo.stargazers_count }}</span>
-							<span>fork-{{ repo.forks_count }}</span>
+							<span><i class="iconfont icon-star"></i>{{ repo.stargazers_count }}</span>
+							<span><i class="iconfont icon-fork"></i>{{ repo.forks_count }}</span>
 						</div>
 						<a class="repo_name" v-link="{ path: '/repos/' + repo.owner.login + '/' + repo.name + '/branches' }">{{ repo.full_name}}</a>
 						<div class="repo_description">{{ repo.description || '这个家伙没写介绍' }}</div>
@@ -89,6 +89,7 @@
 		    font-size: 14px;
 		    .repo_lang {
 		    	font-weight: bold;
+		    	margin-right: 8px;
 		    }
 			}
 			.repo_name {

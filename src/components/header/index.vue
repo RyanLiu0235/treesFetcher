@@ -34,7 +34,7 @@
 	<div class="header">
 		<div class="container">
 			<div class="h_title">treesFetcher</div>
-			<div class="h_search">
+			<div v-if="avatar_url" class="h_search">
 				<div class="input">
 					<input
 						v-model="search" 
