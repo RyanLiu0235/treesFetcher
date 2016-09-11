@@ -1,6 +1,5 @@
 <script>
 	import { searchRepos } from '../../vuex/actions';
-	import { getReposList, getReposTotalCount } from '../../vuex/getters';
 
 	export default {
 		data() {
@@ -19,10 +18,6 @@
 		vuex: {
 			actions: {
 				searchRepos
-			},
-			getters: {
-				reposList: getReposList,
-				reposTotalCount: getReposTotalCount
 			}
 		}
 	}
@@ -41,9 +36,6 @@
 						name="search" 
 						placeholder="输入仓库名字"
 					>
-				</div>
-				<div class="hint">
-					
 				</div>
 			</div>
 			<div class="h_login">
