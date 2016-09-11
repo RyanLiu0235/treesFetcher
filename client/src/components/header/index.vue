@@ -1,6 +1,5 @@
 <script>
-	import { searchRepos } from '../../vuex/actions';
-	import { getAvatarUrl, getAccessToken } from '../../vuex/getters';
+	import { getAvatarUrl } from '../../vuex/getters';
 	import loginDialog from './loginDialog';
 
 	export default {
@@ -15,22 +14,17 @@
 				this.dialog = true;
 			},
 			doSearch() {
-				this.searchRepos(this.access_token, {repo: this.search})
-					.then(res => {
-						this.$router.go('/search/repositories');
-					});
+				if (this.search) {
+					this.$router.go('/search/repositories?q=' + this.search);
+				}
 			}
 		},
 		components: {
 			loginDialog
 		},
 		vuex: {
-			actions: {
-				searchRepos
-			},
 			getters: {
-				avatar_url: getAvatarUrl,
-				access_token: getAccessToken
+				avatar_url: getAvatarUrl
 			}
 		}
 	}

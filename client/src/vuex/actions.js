@@ -9,7 +9,7 @@ const githubApi = 'https://api.github.com';
  */
 export const searchRepos = ({ dispatch }, access_token, query) => {
   return Vue.http
-    .get(`${githubApi}/search/repositories?q=${query.repo}`, {
+    .get(`${githubApi}/search/repositories?q=${query.repo}&page=${query.page}`, {
       headers: {
         'Accept': 'application/json',
         'Authorization': `token ${access_token}`
