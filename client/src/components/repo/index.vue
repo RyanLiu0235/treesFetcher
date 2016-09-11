@@ -48,10 +48,16 @@
 				</ul>
 				<ul class="pagination">
 					<li v-if="curPage > 1">
+						<a class="page_item" v-link="{ path: `/search/repositories?q=${this.query}&p=1` }">首页</a>
+					</li>
+					<li v-if="curPage > 1">
 						<a class="page_item" v-link="{ path: `/search/repositories?q=${this.query}&p=${this.curPage - 1}` }">上一页</a>
 					</li>
-					<li v-if="curPage < parseInt(repos_count/30)">
+					<li v-if="curPage < parseInt(repos_count/30) + 1">
 						<a class="page_item" v-link="{ path: `/search/repositories?q=${this.query}&p=${this.curPage + 1}` }">下一页</a>
+					</li>
+					<li v-if="curPage < parseInt(repos_count/30) + 1">
+						<a class="page_item" v-link="{ path: `/search/repositories?q=${this.query}&p=${parseInt(this.repos_count/30) + 1}` }">第{{ parseInt(repos_count/30) + 1 }}页</a>
 					</li>
 				</ul>
 			</div>
