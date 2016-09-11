@@ -15,7 +15,10 @@
 				this.dialog = true;
 			},
 			doSearch() {
-				this.searchRepos(this.access_token, {repo: this.search});
+				this.searchRepos(this.access_token, {repo: this.search})
+					.then(res => {
+						this.$router.go('/search/repositories');
+					});
 			}
 		},
 		components: {

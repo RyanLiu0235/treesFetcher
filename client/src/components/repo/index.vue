@@ -27,6 +27,9 @@
 						<!-- <div class="repo_meta">更新于3天前</div> -->
 					</li>
 				</ul>
+				<div class="pagination">
+					
+				</div>
 			</div>
 		</div>
 	</div>
@@ -55,6 +58,7 @@
 			.repo_name {
     		line-height: 20px;
     		font-size: 18px;
+    		color: #06c;
 			}	
 			.repo_description {
 		    line-height: 20px;

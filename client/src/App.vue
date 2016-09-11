@@ -1,6 +1,5 @@
 <template>
   <div>
-    <side-menu></side-menu>
     <div class="main_content">
       <g-header></g-header>
       <router-view></router-view>
@@ -39,7 +38,7 @@
     text-decoration: none;
   }
   .main_content {
-    margin-left: 260px;
+    /*margin-left: 260px;*/
   }
   .container {
     width: 1100px;
