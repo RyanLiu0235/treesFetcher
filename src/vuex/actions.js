@@ -34,6 +34,7 @@ export const login = ({ dispatch }, access_token, remember_me) => {
       // 记住用户
       if (remember_me) {
         saveLocalItem('access_token', access_token);
+        saveLocalItem('login', res.body.login);
         saveLocalItem('avatar_url', `${res.body.avatar_url}&s=40`);
       }
       dispatch(types.LOGIN, res.body);
@@ -50,6 +51,7 @@ export const login = ({ dispatch }, access_token, remember_me) => {
 export const logout = ({ dispatch }) => {
   removeLocalItem('access_token');
   removeLocalItem('avatar_url');
+  removeLocalItem('login');
   dispatch(types.LOGOUT);
   return Promise.resolve({status: true});
 }

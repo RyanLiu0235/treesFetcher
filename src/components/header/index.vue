@@ -1,6 +1,6 @@
 <script>
 	import { logout } from '../../vuex/actions';
-	import { getAvatarUrl } from '../../vuex/getters';
+	import { getAvatarUrl, getLogin } from '../../vuex/getters';
 	import loginDialog from './loginDialog';
 
 	export default {
@@ -29,9 +29,13 @@
 		components: {
 			loginDialog
 		},
+		ready() {
+			console.log(this.login)
+		},
 		vuex: {
 			getters: {
-				avatar_url: getAvatarUrl
+				avatar_url: getAvatarUrl,
+				login: getLogin
 			},
 			actions: {
 				logout
@@ -59,7 +63,7 @@
 				<span class="login_button" @click="showDialog">登录</span>
 			</div>
 			<div v-if="avatar_url" class="h_avatar">
-				<img :src="avatar_url">
+				<img :alt="login" :src="avatar_url">
 			</div>
 			<div v-if="avatar_url" class="h_login">
 				<span class="login_button" @click="doLogout">登出</span>
@@ -106,9 +110,16 @@
 	    width: 40px;
 	    height: 40px;
 	    margin-right: 10px;
+	    font-size: 12px;
 	    border-radius: 20px;
 	    overflow: hidden;
 	    cursor: pointer;
+	    img {
+	    	display: block;
+  	    width: 40px;
+		    height: 40px;
+		    word-wrap: break-word;
+	    }
 		}
 	}
 </style>
