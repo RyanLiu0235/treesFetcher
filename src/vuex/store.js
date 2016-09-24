@@ -10,6 +10,7 @@ Vue.use(VueResource);
 
 const state = {
 	reposList: [],
+	branches: [],
 	total_count: 0,
 	avatar_url: getLocalItem('avatar_url') || '',
 	access_token: getLocalItem('access_token') || '',
@@ -22,11 +23,14 @@ const mutations = {
 		state.total_count = data.total_count;
 	},
 
+	[types.FETCH_BRANCHES](state, data) {
+		state.branches = data;
+	},
+
 	[types.LOGIN](state, data) {
 		state.avatar_url = `${data.avatar_url}&s=40`;
 		state.access_token = data.access_token;
 		state.login = data.login;
-		console.log(state.login)
 	},
 
 	[types.LOGOUT](state) {

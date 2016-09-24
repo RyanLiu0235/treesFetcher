@@ -29,9 +29,6 @@
 		components: {
 			loginDialog
 		},
-		ready() {
-			console.log(this.login)
-		},
 		vuex: {
 			getters: {
 				avatar_url: getAvatarUrl,

@@ -1,14 +1,41 @@
 <script>
+	import { fetchBranches } from '../../vuex/actions';
+	import { getAccessToken, getBranches } from '../../vuex/getters';
+
 	export default {
 		data() {
 			return {
-				select: false
+				select: false,
+				owner: '',
+				repo: '',
+				curBranch: 'master'
 			}
 		},
 		methods: {
 			stretch() {
 				this.select = !this.select;
+			},
+			changeBranch(e) {
+				this.curBranch = e.target.attributes['data-name'].value;
 			}
+		},
+		vuex: {
+			actions: {
+				fetchBranches
+			},
+			getters: {
+				access_token: getAccessToken,
+				branches: getBranches
+			}
+		},
+		created() {
+			this.owner = this.$route.params.owner;
+			this.repo = this.$route.params.repo;
+
+			this.fetchBranches(this.access_token, {
+				owner: this.owner,
+				repo: this.repo
+			});
 		}
 	}
 </script>
@@ -19,7 +46,7 @@
 			<div class="branch_select" @click="stretch">
 				<div>branch:</div>
 				<div class="branch_current">
-					<span>master</span>
+					<span>{{ curBranch }}</span>
 					<i class="iconfont" :class="select ? 'icon-drop_up' : 'icon-drop_down'"></i>
 				</div>
 			</div>
@@ -29,11 +56,13 @@
 					<i class="iconfont icon-close" @click="stretch"></i>
 				</div>
 				<ul>
-					<li>
-						<a v-link="{ path: '/repos/vuejs/vue/commits?sha'}">branch 00</a>
-					</li>
-					<li>
-						<a v-link="{ path: '/repos/vuejs/vue/commits?sha'}">branch 01</a>
+					<li v-for="branch in branches">
+						<a 
+							v-link="{ path: '/repos/' + owner + '/' + repo + '/commits?sha=' + branch.commit.sha}"
+							@click="changeBranch"
+							:data-name="branch.name"
+						>{{ branch.name }}</a>
+						<i class="iconfont icon-right" v-if="branch.name == curBranch"></i>
 					</li>
 				</ul>
 			</div>
@@ -51,19 +80,20 @@
 			display: inline-flex;
 			align-items: center;
     	justify-content: space-between;
-			maxwidth: 200px;
+			max-width: 200px;
 			height: 30px;
 			line-height: 30px;
 			padding: 0 5px;
 			font-size: 14px;
-			color: #333;
+			color: #666;
 			border: 1px #000 solid;
 			border-radius: 2px;
 			background-color: #efefef;
 			cursor: pointer;
 			.branch_current {
 				height: 30px;
-				margin-left: 4px;
+				margin-left: 7px;
+				color: #333;
 			}
 		}
 		.branch_list {
@@ -96,19 +126,21 @@
 			}
 			ul {
 				li {
+					display: flex;
 					line-height: 32px;
 					padding: 0 5px;
 					font-size: 13px;
 					color: #666;
-					border-bottom: 1px #efefef solid;
+					border-top: 1px #e0e0e0 solid;
 					background-color: #f9f9f9;
-					&:last-of-type {
-						border-bottom: none;
-					}
 					&:hover {
 						background-color: darken(#f9f9f9, 5%);
 					}
 					a {
+						display: block;
+						flex: 1;
+					}
+					i {
 						display: block;
 					}
 				}

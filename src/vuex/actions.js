@@ -25,6 +25,27 @@ export const searchRepos = ({ dispatch }, access_token, query) => {
 }
 
 /**
+ * 搜索branches
+ */
+export const fetchBranches = ({ dispatch }, access_token, query) => {
+  return Vue.http
+    .get(`${githubApi}/repos/${query.owner}/${query.repo}/branches`, {
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': `token ${access_token}`
+      }
+    })
+    .then(res => {
+      dispatch(types.FETCH_BRANCHES, res.data);
+      return Promise.resolve({ status: true });
+    })
+    .catch(res => {
+      console.error(res);
+    });
+}
+
+
+/**
  * 登录
  */
 export const login = ({ dispatch }, access_token, remember_me) => {
