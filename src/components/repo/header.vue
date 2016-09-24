@@ -8,9 +8,10 @@
 				select: false,
 				owner: '',
 				repo: '',
-				curBranch: 'master'
+				cur_branch: 'master'
 			}
 		},
+		props: ['default_branch'],
 		methods: {
 			stretch() {
 				this.select = !this.select;
@@ -31,6 +32,7 @@
 		created() {
 			this.owner = this.$route.params.owner;
 			this.repo = this.$route.params.repo;
+			this.curBranch = this.default_branch;
 
 			this.fetchBranches(this.access_token, {
 				owner: this.owner,
@@ -46,7 +48,7 @@
 			<div class="branch_select" @click="stretch">
 				<div>branch:</div>
 				<div class="branch_current">
-					<span>{{ curBranch }}</span>
+					<span>{{ cur_branch }}</span>
 					<i class="iconfont" :class="select ? 'icon-drop_up' : 'icon-drop_down'"></i>
 				</div>
 			</div>
@@ -62,7 +64,7 @@
 							@click="changeBranch"
 							:data-name="branch.name"
 						>{{ branch.name }}</a>
-						<i class="iconfont icon-right" v-if="branch.name == curBranch"></i>
+						<i class="iconfont icon-right" v-if="branch.name == cur_branch"></i>
 					</li>
 				</ul>
 			</div>
