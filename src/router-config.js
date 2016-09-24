@@ -4,13 +4,10 @@ export function routerConfig(router) {
 			component: (resolve) => require(['./components/welcome'], resolve)
 		},
 		'/search/repositories': {
+			component: (resolve) => require(['./components/search'], resolve)
+		},
+		'/:owner/:repo': {
 			component: (resolve) => require(['./components/repo'], resolve)
-		},
-		'/:owner/:repo/tree/:sha': {
-			component: (resolve) => require(['./components/tree'], resolve)
-		},
-		'/repos/:owner/:repo/commits': {
-			component: (resolve) => require(['./components/commits'], resolve)
 		}
 	});
 }

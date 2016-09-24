@@ -58,7 +58,7 @@
 				<ul>
 					<li v-for="branch in branches">
 						<a 
-							v-link="{ path: '/repos/' + owner + '/' + repo + '/commits?sha=' + branch.commit.sha}"
+							v-link="{ path: '/' + owner + '/' + repo + '?sha=' + branch.commit.sha}"
 							@click="changeBranch"
 							:data-name="branch.name"
 						>{{ branch.name }}</a>
