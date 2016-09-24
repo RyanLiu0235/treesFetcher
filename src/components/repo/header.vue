@@ -17,7 +17,7 @@
 				this.select = !this.select;
 			},
 			changeBranch(e) {
-				this.curBranch = e.target.attributes['data-name'].value;
+				this.cur_branch = e.target.attributes['data-name'].value;
 			}
 		},
 		vuex: {
