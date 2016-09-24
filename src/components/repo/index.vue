@@ -45,7 +45,7 @@
 							<span><i class="iconfont icon-star"></i>{{ repo.stargazers_count }}</span>
 							<span><i class="iconfont icon-fork"></i>{{ repo.forks_count }}</span>
 						</div>
-						<a class="repo_name" v-link="{ path: '/repos/' + repo.owner.login + '/' + repo.name + '/branches' }">{{ repo.full_name}}</a>
+						<a class="repo_name" v-link="{ path: '/repos/' + repo.owner.login + '/' + repo.name + '/commits' }">{{ repo.full_name}}</a>
 						<div class="repo_description">{{ repo.description || '这个家伙没写介绍' }}</div>
 						<!-- <div class="repo_meta">更新于3天前</div> -->
 					</li>

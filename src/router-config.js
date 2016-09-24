@@ -8,6 +8,9 @@ export function routerConfig(router) {
 		},
 		'/:owner/:repo/tree/:sha': {
 			component: (resolve) => require(['./components/tree'], resolve)
+		},
+		'/repos/:owner/:repo/commits': {
+			component: (resolve) => require(['./components/commits'], resolve)
 		}
 	});
 }
